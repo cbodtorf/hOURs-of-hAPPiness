@@ -1,47 +1,17 @@
-body {
-  background-color: $black;
-}
-
 .main-window {
   width: 100%;
   background-color: transparent;
+  font-size: 1.5em;
 }
 .login {
   width: 95%;
-  max-width: 500px;
-  padding-top: 20px;
-  margin: 0 auto;
-  margin-top: 100px;
+  margin: 25% auto;
   position: relative;
-  background-color: $secondary;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0 2px 5px 5px $accent;
-  .logo {
-    width: 100px;
-    height: 100px;
-    display: block;
-    padding-left: 3px;
-    margin: 20px auto;
-    background-color: $grey;
-    border: 2px solid black;
-    box-shadow: 0 2px 5px 5px $accent;
-    border-radius: 50%;
-  }
-  .user, .pass {
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-  }
-  .user-icon, .key-icon {
-    width: 35px;
-    background: $grey;
-    border-radius: 5px;
-    vertical-align: middle;
-    margin-left: 10px;
-  }
   input, button{
     border: none;
-    width: 80%;
+    width: 100%;
     height: 50px;
     margin: 0;
     display: inline-block;
@@ -53,24 +23,19 @@ body {
     box-shadow: none;
   }
   input {
-    color: white;
-    background-color: #473547;
     box-sizing: border-box;
     box-shadow: 0 2px 5px 5px $accent;
     padding-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     // border: .5px solid $black;
     &:focus{
       background: $accent;
     }
   }
   button {
-    display: block;
-    margin: 0 auto;
-    color: $grey;
+    color: gray;
     &:hover{
       font-weight: bold;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
   }
 }

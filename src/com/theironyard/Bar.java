@@ -7,11 +7,13 @@ public class Bar {
     Integer barId;
     String barName;
     String barLocation;
+    String imageUrl;
 
-    public Bar(Integer barId, String barName, String barLocation) {
+    public Bar(Integer barId, String barName, String barLocation, String imageUrl) {
         this.barId = barId;
         this.barName = barName;
         this.barLocation = barLocation;
+        this.imageUrl = imageUrl;
     }
 
     public Bar() {
@@ -39,5 +41,13 @@ public class Bar {
 
     public void setBarLocation(String barLocation) {
         this.barLocation = barLocation;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
