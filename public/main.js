@@ -102,9 +102,15 @@ var app = {
           })
         })
 
-        // ---->    SUBMIT ADD BAR on CLICK
-        $('button[name=barSubmit]').on('click', function(event){
-          app.barSubmit();
+    // ---->    SUBMIT ADD BAR on CLICK
+    $('button[name=barSubmit]').on('click', function(event){
+      app.barSubmit();
+    })
+
+    // ----> CLICK ABOUT to SHOW ABOUT PAGE
+        $('.aboutPage').on('click', function (){
+          $('.barInput')
+          })
         })
 
   },

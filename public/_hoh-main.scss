@@ -4,7 +4,7 @@ nav{
   display: flex;
   justify-content: space-around;
   h1 {
-    color: $black;
+    color: #473547;
     margin-left: 10px;
     display: inline-block;
   }
@@ -21,22 +21,64 @@ nav{
   margin-bottom: 20px;
   width: 100%;
 }
+
+// CREATE BAR FORM
+
 .barInput {
   width: 100%;
   margin: 0 auto;
+  background-color: $secondary;
+  // border-radius: 8px;
+  box-shadow: 0 2px 5px 5px $accent;
   span {
     text-align: center;
     font-size: 3em;
+    background-color: transparent;
+    text-align: center;
+    color: $grey;
+    display: block;
+  }
+  input, button{
+    border: none;
+    width: 80%;
+    height: 50px;
+    margin: 0;
+    display: inline-block;
+    outline: none;
+    outline-offset: 0;
+    border-radius: 8px;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
   }
   input {
     width: 100%;
     margin: 0 auto;
+    color: white;
+    background-color: #473547;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 5px $accent;
+    padding-left: 20px;
+    margin-top: 20px;
+    // border: .5px solid $black;
+    &:focus{
+      background: $accent;
+    }
   }
   button {
     width: 100%;
+    display: block;
+    margin: 0 auto;
+    color: $grey;
+    &:hover{
+      font-weight: bold;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
   }
 }
 
+
+//  FOOTER
 footer {
   background-color: $grey;
   display: inline-flex;
@@ -61,15 +103,4 @@ footer {
     width: 50px;
     height: 50px;
   }
-}
-.bars {
-  background-color: white;
-  color: blue;
-  font-size: 2em;
-}
-.barInput {
-  background-color: white;
-}
-.reviewInput {
-  background-color: blue;
 }
