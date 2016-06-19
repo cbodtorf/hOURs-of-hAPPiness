@@ -37,10 +37,11 @@ public class Main {
     }
 
     public static void insertBar (Connection conn, Bar bar) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO bars VALUES (NULL, ?, ?, ?)");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO bars VALUES (NULL, ?, ?, ?, ?)");
         stmt.setString(1, bar.barName);
         stmt.setString(2, bar.barLocation);
         stmt.setString(3, bar.imageUrl);
+        stmt.setString(4, bar.author);
         stmt.execute();
     }
 
