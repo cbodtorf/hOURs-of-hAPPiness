@@ -16,10 +16,15 @@ nav{
   }
 }
 .main-content {
-  background-color: $grey;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
   width: 100%;
+  .welcome {
+    background-color: $grey;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
 
 // CREATE BAR FORM
@@ -77,6 +82,32 @@ nav{
   }
 }
 
+// BARS QUICKVIEW
+
+.summary {
+  width: 95%;
+  display: block;
+  background-color: rgba(0,0,0,0.2);
+  margin: 0 auto;
+  color: white;
+  margin-top: 5px;
+  font-size: 2em;
+  text-align: center;
+  img {
+    cursor: pointer;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    transition: filter ease .5s;
+    transition: -webkit-filter ease .5s;
+    -webkit-filter: opacity(0.7);
+    filter: opacity(0.7);
+    &:hover{
+      -webkit-filter: opacity(1);
+      filter: opacity(1);
+    }
+  }
+}
 
 //  FOOTER
 footer {
@@ -88,6 +119,7 @@ footer {
   width: 100%;
   height: 80px;
   justify-content: space-around;
+  box-shadow: 0 -3px 5px 5px rgba(0, 0, 0, 0.3);
   div {
     margin-top: 5px;
     display: inline-flex;

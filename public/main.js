@@ -30,6 +30,7 @@ var app = {
   // ---->     stores username to reduce calls to server
 
   user: '',
+  id: '',
   init: function(){
     app.events();
     app.styling();
@@ -59,7 +60,8 @@ var app = {
     var objToSend =
       {barName: $('input[name=barName]').val(),
       barLocation: $('input[name=location]').val(),
-      imageUrl: $('input[name=imageUrl]').val()
+      imageUrl: $('input[name=imageUrl]').val(),
+      author: app.user
     };
     console.log("bar", objToSend);
     app.createBar(JSON.stringify(objToSend));
@@ -91,9 +93,11 @@ var app = {
     })
 
     // ----> CLICK BAR to REVIEWPAGE
-        $('.bars').on('click','.bar', function(event){
-          $('.bars').fadeOut();
-          app.readReview();
+        $('.bars').on('click','.summary', function(event){
+          app.id = this.getAttribute("data-id");
+          console.log("bar id", app.id)
+          app.readBarFull();
+          // app.readReview(app.id);
         })
 
     // ----> CLICK PLUS to SHOW BAR FORM
@@ -104,14 +108,17 @@ var app = {
 
     // ---->    SUBMIT ADD BAR on CLICK
     $('button[name=barSubmit]').on('click', function(event){
+      $('.barInput').slideToggle("slow", function(event){
+      })
       app.barSubmit();
+      $('input').val('');
     })
 
     // ----> CLICK ABOUT to SHOW ABOUT PAGE
-        $('.aboutPage').on('click', function (){
-          $('.barInput')
-          })
-        })
+        // $('.aboutPage').on('click', function (){
+        //   $('.barInput')
+        //   })
+        // })
 
   },
 
@@ -173,18 +180,37 @@ var app = {
     })
   },
 
-  readReview: function(){
+  readBarFull: function(){
     $.ajax({
-      url: app.url.review,
+      url: app.url.bars,
       method: "GET",
       success: function(data){
         console.log("X gonna give it to ya::reading", data);
         data = JSON.parse(data);
         $('.bars').html('');
-        data.forEach(function(element,idx){
-          var barString = app.htmlGen(templates.review, element)
-          $('.main-content').append(barString);
+        var bar = data.filter(function(element,idx){
+          return element.barId === Number(app.id);
         })
+        console.log(bar)
+        var barString = app.htmlGen(templates.barFullView, bar[0]);
+        $('.bars').append(barString);
+      },
+      error: function(err) {
+        console.log('dang son',err)
+      }
+    })
+  },
+
+  readReview: function(id){
+    $.ajax({
+      url: app.url.review + "/" + id,
+      method: "GET",
+      success: function(data){
+        console.log("X gonna give it to ya::reading", data);
+        data = JSON.parse(data);
+        // $('.bars').html('');
+          var barString = app.htmlGen(templates.review)
+          $('.main-content').append(barString);
       },
       error: function(err) {
         console.log('dang son',err)
