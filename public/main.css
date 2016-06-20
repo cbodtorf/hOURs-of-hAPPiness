@@ -145,11 +145,6 @@ nav {
     color: #473547;
     margin-left: 10px;
     display: inline-block; }
-  nav img {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    align-self: center; }
 
 .main-content {
   margin-top: 20px;
@@ -161,19 +156,19 @@ nav {
     display: block;
     margin-bottom: 20px; }
 
-.barInput {
+.barInput, .reviewInput {
   width: 100%;
   margin: 0 auto;
   background-color: #423142;
   box-shadow: 0 2px 5px 5px rgba(0, 0, 0, 0.05); }
-  .barInput span {
+  .barInput span, .reviewInput span {
     text-align: center;
     font-size: 3em;
     background-color: transparent;
     text-align: center;
     color: #A9A9A9;
     display: block; }
-  .barInput input, .barInput button {
+  .barInput input, .barInput button, .reviewInput input, .reviewInput button {
     border: none;
     width: 80%;
     height: 50px;
@@ -185,7 +180,7 @@ nav {
     background: transparent;
     padding: 0;
     box-shadow: none; }
-  .barInput input {
+  .barInput input, .reviewInput input {
     width: 100%;
     margin: 0 auto;
     color: white;
@@ -194,19 +189,20 @@ nav {
     box-shadow: 0 2px 5px 5px rgba(0, 0, 0, 0.05);
     padding-left: 20px;
     margin-top: 20px; }
-    .barInput input:focus {
+    .barInput input:focus, .reviewInput input:focus {
       background: rgba(0, 0, 0, 0.05); }
-  .barInput button {
+  .barInput button, .reviewInput button {
     width: 100%;
     display: block;
     margin: 0 auto;
     color: #A9A9A9; }
-    .barInput button:hover {
+    .barInput button:hover, .reviewInput button:hover {
       font-weight: bold;
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); }
 
-.summary {
+.summary, .fullView {
   width: 95%;
+  max-width: 700px;
   display: block;
   background-color: rgba(0, 0, 0, 0.2);
   margin: 0 auto;
@@ -214,7 +210,7 @@ nav {
   margin-top: 5px;
   font-size: 2em;
   text-align: center; }
-  .summary img {
+  .summary img, .fullView img {
     cursor: pointer;
     width: 90%;
     margin: 0 auto;
@@ -223,7 +219,7 @@ nav {
     transition: -webkit-filter ease .5s;
     -webkit-filter: opacity(0.7);
     filter: opacity(0.7); }
-    .summary img:hover {
+    .summary img:hover, .fullView img:hover {
       -webkit-filter: opacity(1);
       filter: opacity(1); }
 
@@ -249,3 +245,8 @@ footer {
     display: inline-block;
     width: 50px;
     height: 50px; }
+  footer .reviewIcon {
+    width: 40px;
+    margin: 0 auto; }
+  footer .plus {
+    width: 40px; }

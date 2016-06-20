@@ -20,7 +20,6 @@ var app = {
     bars: "/get-bars",
     logout: "/log-out",
     createbar: "/create-bar",
-    getbars: "/get-bars",
     createreview: "/create-review",
     editreview: "/edit-review",
     deletebar: "/delete-bar/:id",
@@ -67,6 +66,17 @@ var app = {
     app.createBar(JSON.stringify(objToSend));
   },
 
+  reviewSubmit: function(){
+    event.preventDefault();
+    var objToSend =
+      {rating: $('select').val(),
+      review: $('textarea').val(),
+      author: app.user
+    };
+    console.log("review", objToSend);
+    // app.createReview(JSON.stringify(objToSend));
+  },
+
   // ---->    STYLING
   // ---->    replaces default w/ username
 
@@ -75,7 +85,7 @@ var app = {
 
   },
   events: function(){
-
+    //  ---->    LOGIN
     // ---->    SUBMIT on CLICK
     $('button[name=button]').on('click', function(event){
       app.loginSubmit();
@@ -92,14 +102,31 @@ var app = {
       }
     })
 
-    // ----> CLICK BAR to REVIEWPAGE
+    //  ---->    REVIEWPAGE
+    // ----> CLICK IMG to REVIEWPAGE
         $('.bars').on('click','.summary', function(event){
           app.id = this.getAttribute("data-id");
           console.log("bar id", app.id)
+          $(".addReview").fadeIn().css({"display": "flex"});
           app.readBarFull();
           // app.readReview(app.id);
         })
 
+    // ----> CLICK CLIPBOARD to REVIEWPAGE FORM
+        $('.reviewIcon').on('click', function (){
+          $('.reviewInput').slideToggle("slow", function(event){
+          })
+        })
+    // ---->    SUBMIT ADD REVIEW_ on CLICK
+    $('button[name=reviewSubmit]').on('click', function(event){
+      $('.reviewInput').slideToggle("slow", function(event){
+      })
+      app.reviewSubmit();
+      $('textarea').val('');
+    })
+
+
+    //  ---->    ADD BAR
     // ----> CLICK PLUS to SHOW BAR FORM
         $('.plus').on('click', function (){
           $('.barInput').slideToggle("slow", function(event){
@@ -154,6 +181,21 @@ var app = {
       success: function(data){
         console.log("X gonna give it to ya::creatingBar", data);
         app.readBar();
+      },
+      error: function(err) {
+        console.log('dang son',err)
+      }
+    })
+  },
+
+  createReview: function(stuff){
+    $.ajax({
+      url: app.url.createreview,
+      data: stuff,
+      method: "POST",
+      success: function(data){
+        console.log("X gonna give it to ya::creatingBar", data);
+        app.readReview();
       },
       error: function(err) {
         console.log('dang son',err)

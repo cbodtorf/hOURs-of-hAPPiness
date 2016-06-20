@@ -11,7 +11,7 @@ var templates = {
   <div class='fullView' data-id='<%= barId %>'>
     <img class="bar" src="<%= imageUrl %>" alt="" />
     <h3> <%= barName %> </h3>
-    <span><%= author %></span>
+    <span>Author: <%= author %></span>
   </div>
   `,
   review:

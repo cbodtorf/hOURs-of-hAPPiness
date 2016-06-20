@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="main-window">
-              <!-- clock -->
+              <!-- clock credit: https://cssanimation.rocks/clocks/-->
               <!-- <article class="clock">
                 <div class="hours-container">
                   <div class="hours"></div>
@@ -42,7 +42,6 @@
       <div class="hoh-main hidden">
         <nav>
           <h1>hOURs of hAPPiness</h1>
-          <img class="plus" src="assets/plus.png" alt="" />
         </nav>
 
         <!-- MAIN CONTENT AREA -->
@@ -56,10 +55,18 @@
             <input type="text" name="imageUrl" value="" placeholder="image url">
             <button type="button" name="barSubmit">Add</button>
           </div>
-          <!-- <div class="reviewInput">
-            <input type="text" name="review" value="" placeholder="review">
-            <input type="text" name="rating" value="" placeholder="rating 1-5">
-          </div> -->
+          <div class="reviewInput hidden">
+            <span>Add a Review for this bar</span>
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <textarea name="review" placeholder="enter review"></textarea>
+            <button type="button" name="reviewSubmit">Reviewing it!</button>
+          </div>
           <div class="bars">
             <!-- Bars to be INSERTED-->
 
@@ -73,9 +80,17 @@
             <img src="assets/about.png" alt="" />
             <span>about</span>
           </div>
+          <div class="addBar">
+            <img class="plus" src="assets/bar.png" alt="" />
+            <span>+Bar</span>
+          </div>
           <div class="barPage">
             <img src="assets/beer.png" alt="" />
             <span>bars</span>
+          </div>
+          <div class="addReview hidden">
+            <img class="reviewIcon" src="assets/review.png" alt="" />
+            <span>+Review</span>
           </div>
           <div class="favesPage">
             <img src="assets/faves.png" alt="" />
