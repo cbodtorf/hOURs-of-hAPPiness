@@ -1,0 +1,18 @@
+//Variables
+$white : #fff;
+$grey: #A9A9A9;
+$black : #292931;
+$primary: #ff1;
+$secondary: #423142;
+$accent : rgba(0,0,0,0.05);
+
+.hidden {
+  display: none;
+}
+
+@import "normalize";
+@import "clock";
+@import "login";
+@import "hoh-main";
+@import "about";
+@import "review";
