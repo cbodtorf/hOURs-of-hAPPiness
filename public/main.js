@@ -74,7 +74,7 @@ var app = {
       author: app.user
     };
     console.log("review", objToSend);
-    // app.createReview(JSON.stringify(objToSend));
+    app.createReview(JSON.stringify(objToSend));
   },
 
   // ---->    STYLING
@@ -109,7 +109,7 @@ var app = {
           console.log("bar id", app.id)
           $(".addReview").fadeIn().css({"display": "flex"});
           app.readBarFull();
-          // app.readReview(app.id);
+          app.readReview();
         })
 
     // ----> CLICK CLIPBOARD to REVIEWPAGE FORM
@@ -142,10 +142,25 @@ var app = {
     })
 
     // ----> CLICK ABOUT to SHOW ABOUT PAGE
-        // $('.aboutPage').on('click', function (){
-        //   $('.barInput')
-        //   })
-        // })
+        $('.aboutIcon').on('click', function (){
+          $('.addReview').hide();
+          $('.bars').html('');
+          $('.aboutPage').fadeIn();
+        })
+
+    // ----> CLICK ABOUT to SHOW ABOUT PAGE
+        $('.barPage').on('click', function (){
+          $('.addReview').hide();
+          $('.aboutPage').hide();
+          app.readBar();
+        })
+
+    // ----> CLICK DELETE REVIEW_
+        $('.bars').on('click', 'button[name=reviewDelete]', function (){
+          var reviewId = this.parentElement.getAttribute("data-id");
+          console.log(reviewId);
+          app.deleteReview(Number(reviewId));
+        })
 
   },
 
@@ -243,16 +258,17 @@ var app = {
     })
   },
 
-  readReview: function(id){
+  readReview: function(){
     $.ajax({
-      url: app.url.review + "/" + id,
+      url: app.url.review,
       method: "GET",
       success: function(data){
         console.log("X gonna give it to ya::reading", data);
         data = JSON.parse(data);
         // $('.bars').html('');
-          var barString = app.htmlGen(templates.review)
-          $('.main-content').append(barString);
+        // add for each statement for each review of particular bar
+          var reviewString = app.htmlGen(templates.review, data[0]);
+          $('.bars').append(reviewString);
       },
       error: function(err) {
         console.log('dang son',err)
@@ -274,14 +290,14 @@ var app = {
     })
   },
 
-  delete: function(stuffId){
-    var deleteUrl = app.url + "/" + stuffId;
+  deleteReview: function(stuffId){
+    var deleteUrl = app.url.deletereview + "/:" + stuffId;
     $.ajax({
       url: deleteUrl,
       method: "DELETE",
       success: function(data){
         console.log("WE DELETED SOMETHING", data);
-        app.read();
+        app.readReview();
       },
       error: function(err){
         console.error("dang son!",err);
